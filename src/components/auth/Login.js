@@ -10,7 +10,6 @@ const Login = props => {
 
     // Simplistic handler for login submit
     const handleLogin = (e) => {
-        console.log("past login func")
         e.preventDefault()
         const credentials = {
             "username": email,

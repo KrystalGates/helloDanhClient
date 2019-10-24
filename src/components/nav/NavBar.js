@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import { Menu, Dropdown } from 'semantic-ui-react'
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
+import ApplicationViews from '../../ApplicationViews'
 
 
 const NavBar = props => {
@@ -39,9 +41,10 @@ const NavBar = props => {
           </Dropdown.Menu>
         </Dropdown>
         </Menu>
+        <ApplicationViews/>
       </div>
     )
   }
 
 
-export default NavBar
+export default withRouter(NavBar)
