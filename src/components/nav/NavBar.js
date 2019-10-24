@@ -1,13 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { Menu, Dropdown } from 'semantic-ui-react'
+import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
+
 
 const NavBar = props => {
-    // state = { activeItem: 'account' }
-
-    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-    // const { activeItem } = this.state
+  const { logout } = useSimpleAuth()
 
     return (
         <div>
@@ -18,19 +16,26 @@ const NavBar = props => {
             // onClick={this.handleItemClick}
           />
           <Menu.Menu position='right'>
-            <Menu.Item
+            {/* <Menu.Item
               name='login'
               as={Link} to="/login"
             //   active={activeItem === 'logout'}
             //   onClick=<Link className="nav-link" to="/register">Register</Link>
-            />
+            /> */}
           </Menu.Menu>
           <Dropdown item text='My Settings'>
           <Dropdown.Menu>
             <Dropdown.Item>Contacts</Dropdown.Item>
             <Dropdown.Item>Alerts</Dropdown.Item>
             <Dropdown.Item>My Info</Dropdown.Item>
-            <Dropdown.Item>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={() => {
+                                    logout()
+                                    props.history.push({
+                                        pathname: "/login"
+                                    })
+                                }
+                                }
+                            >Logout</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         </Menu>

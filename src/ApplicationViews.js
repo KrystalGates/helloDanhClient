@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom"
 import React from "react"
-import { withRouter } from "react-router-dom"
+
 import Login from "./components/auth/Login"
 
 
@@ -20,4 +20,4 @@ const ApplicationViews = () => {
     )
 }
 
-export default withRouter(ApplicationViews)
+export default ApplicationViews

@@ -5,7 +5,7 @@ const useSimpleAuth = () => {
     const [loggedIn, setIsLoggedIn] = useState(false)
 
     const isAuthenticated = () =>
-        loggedIn || localStorage.getItem("bangazon_token") !== null
+        loggedIn || localStorage.getItem("helloDanh_token") !== null
 
     const register = userInfo => {
         return fetch("http://127.0.0.1:8000/register", {
@@ -19,8 +19,7 @@ const useSimpleAuth = () => {
             .then(res => res.json())
             .then(res => {
                 if ("token" in res) {
-                    localStorage.setItem( "bangazon_token", res.token )
-                    localStorage.setItem("customer_id", res.customer_id)
+                    localStorage.setItem( "helloDanh_token", res.token )
                     setIsLoggedIn(true)
                 }
             })
@@ -38,8 +37,7 @@ const useSimpleAuth = () => {
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem( "bangazon_token", res.token )
-                    localStorage.setItem("customer_id", res.customer_id)
+                    localStorage.setItem( "helloDanh_token", res.token )
                     setIsLoggedIn(true)
                 }
             })
@@ -47,8 +45,7 @@ const useSimpleAuth = () => {
 
     const logout = () => {
         setIsLoggedIn(false)
-        localStorage.removeItem("bangazon_token")
-        localStorage.removeItem("customer_id")
+        localStorage.removeItem("helloDanh_token")
     }
 
     return { isAuthenticated, logout, login, register }
