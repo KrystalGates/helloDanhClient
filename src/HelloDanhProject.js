@@ -1,28 +1,23 @@
-import React from 'react'
-import { Route, Redirect } from "react-router-dom"
-import NavBar from "./components/nav/NavBar"
-import ApplicationViews from "./ApplicationViews"
-import useSimpleAuth from './hooks/ui/useSimpleAuth'
-import Login from './components/auth/Login'
-
+import React, { useState } from "react";
+import ApplicationViews from "./ApplicationViews";
+import useSimpleAuth from "./hooks/ui/useSimpleAuth";
+import Login from "./components/auth/Login";
+import NavBar from "./components/nav/NavBar";
 
 const HelloDanhProject = props => {
-    const {isAuthenticated}  = useSimpleAuth()
+  const [loggedIn, setIsLoggedIn] = useState(false)
+  const { isAuthenticated } = useSimpleAuth();
 
-        if (isAuthenticated())
-            return (
-                <React.Fragment>
-                   
-                    <NavBar {...props} />
-                </React.Fragment>
-        )
-       else
-            return (
-                <React.Fragment>
-                    <ApplicationViews/>
-                    <Redirect to="/login"/>
-                </React.Fragment>
-            )
-}
+  if (isAuthenticated(loggedIn)) {
+    return (
+      <React.Fragment>
+        <NavBar setIsLoggedIn={setIsLoggedIn}/>
+        <ApplicationViews />
+      </React.Fragment>
+    );
+  } else {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
+  }
+};
 
-export default HelloDanhProject
+export default HelloDanhProject;

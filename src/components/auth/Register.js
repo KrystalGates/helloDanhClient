@@ -1,6 +1,5 @@
 import React, { useState} from "react"
 import { Button, Modal, Form } from "semantic-ui-react"
-import { withRouter } from "react-router-dom"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
 
 
@@ -18,6 +17,18 @@ const Register = props => {
     const handleRegister = (e) => {
         e.preventDefault()
 
+        const defaultAlerts = userInfo => {
+          return fetch("http://127.0.0.1:8000/alert", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json"
+              },
+              body: JSON.stringify(userInfo)
+          })
+              .then(res => res.json())
+      }
+
         const newUser = {
             "first_name": firstName,
             "last_name": lastName,
@@ -26,12 +37,12 @@ const Register = props => {
             "email": email,
             "password": password
         }
-
-        register(newUser).then(() => {
-            props.history.push({
-                pathname: "/"
-            })
-        })
+        register(newUser, props.setIsLoggedIn)
+        // .then(() => {
+        //     props.history.push({
+        //         pathname: "/home"
+        //     })
+        // })
     }
 
     return (

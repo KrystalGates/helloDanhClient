@@ -16,12 +16,7 @@ const Login = props => {
             "password": password
         }
 
-        login(credentials)
-            .then(() => {
-                props.history.push({
-                    pathname: "/"
-                })
-            })
+        login(credentials, props.setIsLoggedIn)
     }
 
     return (
@@ -49,7 +44,7 @@ const Login = props => {
             </Form>
             <Message>
                 New to us?
-                <Register {...props}
+                <Register setIsLoggedIn={props.setIsLoggedIn} {...props}
               />
             </Message>
             </Grid.Column>
