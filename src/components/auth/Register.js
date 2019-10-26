@@ -1,8 +1,6 @@
 import React, { useState} from "react"
 import { Button, Modal, Form } from "semantic-ui-react"
-import { withRouter } from "react-router-dom"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
-
 
 const Register = props => {
     const [email,setEmail] = useState()
@@ -13,10 +11,9 @@ const Register = props => {
     const [phoneNumber, setPhoneNumber] = useState()
     const [verifyPassword, setVerifyPassword] = useState()
     const { register } = useSimpleAuth()
-
-
     const handleRegister = (e) => {
         e.preventDefault()
+
 
         const newUser = {
             "first_name": firstName,
@@ -26,12 +23,12 @@ const Register = props => {
             "email": email,
             "password": password
         }
-
-        register(newUser).then(() => {
-            props.history.push({
-                pathname: "/"
-            })
-        })
+        register(newUser, props.setIsLoggedIn)
+        // .then(() => {
+        //     props.history.push({
+        //         pathname: "/home"
+        //     })
+        // })
     }
 
     return (

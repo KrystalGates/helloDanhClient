@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { withRouter } from "react-router-dom"
 import { Menu, Dropdown } from 'semantic-ui-react'
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
 import ApplicationViews from '../../ApplicationViews'
@@ -9,6 +8,7 @@ import ApplicationViews from '../../ApplicationViews'
 const NavBar = props => {
   const { logout } = useSimpleAuth()
 
+  props.setIsLoggedIn(true)
     return (
         <div>
         <Menu pointing secondary>
@@ -31,10 +31,8 @@ const NavBar = props => {
             <Dropdown.Item>Alerts</Dropdown.Item>
             <Dropdown.Item>My Info</Dropdown.Item>
             <Dropdown.Item onClick={() => {
-                                    logout()
-                                    props.history.push({
-                                        pathname: "/login"
-                                    })
+                                    logout(props.setIsLoggedIn)
+
                                 }
                                 }
                             >Logout</Dropdown.Item>
@@ -47,4 +45,4 @@ const NavBar = props => {
   }
 
 
-export default withRouter(NavBar)
+export default NavBar

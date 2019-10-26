@@ -1,13 +1,8 @@
-import { useState } from "react"
-
 const useSimpleAuth = () => {
-
-    const [loggedIn, setIsLoggedIn] = useState(false)
-
-    const isAuthenticated = () =>
+    const isAuthenticated = loggedIn =>
         loggedIn || localStorage.getItem("helloDanh_token") !== null
 
-    const register = userInfo => {
+    const register = (userInfo, setIsLoggedIn) => {
         return fetch("http://127.0.0.1:8000/register", {
             method: "POST",
             headers: {
@@ -25,7 +20,7 @@ const useSimpleAuth = () => {
             })
     }
 
-    const login = credentials => {
+    const login = (credentials, setIsLoggedIn) => {
         return fetch("http://127.0.0.1:8000/login", {
             method: "POST",
             headers: {
@@ -43,7 +38,7 @@ const useSimpleAuth = () => {
             })
     }
 
-    const logout = () => {
+    const logout = setIsLoggedIn => {
         setIsLoggedIn(false)
         localStorage.removeItem("helloDanh_token")
     }
