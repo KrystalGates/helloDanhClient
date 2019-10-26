@@ -8,6 +8,7 @@ import ApplicationViews from '../../ApplicationViews'
 const NavBar = props => {
   const { logout } = useSimpleAuth()
 
+  props.setIsLoggedIn(true)
     return (
         <div>
         <Menu pointing secondary>

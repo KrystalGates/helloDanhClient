@@ -2,7 +2,6 @@ import React, { useState} from "react"
 import { Button, Modal, Form } from "semantic-ui-react"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
 
-
 const Register = props => {
     const [email,setEmail] = useState()
     const [password, setPassword] = useState()
@@ -12,22 +11,9 @@ const Register = props => {
     const [phoneNumber, setPhoneNumber] = useState()
     const [verifyPassword, setVerifyPassword] = useState()
     const { register } = useSimpleAuth()
-
-
     const handleRegister = (e) => {
         e.preventDefault()
 
-        const defaultAlerts = userInfo => {
-          return fetch("http://127.0.0.1:8000/alert", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json"
-              },
-              body: JSON.stringify(userInfo)
-          })
-              .then(res => res.json())
-      }
 
         const newUser = {
             "first_name": firstName,
