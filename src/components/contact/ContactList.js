@@ -33,7 +33,7 @@ const ContactList = props => {
             <ContactCard
               contact={contact}
               {...props}
-              key={contact.id}
+              key={contact.id} getContacts={getContacts} contactId={contact.id}
             />
           )}
           </Card.Content>

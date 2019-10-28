@@ -2,7 +2,8 @@ import React, { useEffect, useState} from "react"
 import { Button, Modal, Form } from "semantic-ui-react"
 
 const AlertEditModal = props => {
-    const [singleAlert, setAlert] = useState([])
+    const [alertObj, setAlertObj] = useState([])
+    const [editAlert, setEditAlert] = useState([])
 
     const getAlert = () => {
         fetch(`http://127.0.0.1:8000/alerts/${props.alertId}`, {
@@ -15,7 +16,7 @@ const AlertEditModal = props => {
         })
           .then(res => res.json())
           .then((singleAlert) =>
-            setAlert(singleAlert)
+            setAlertObj(singleAlert)
         )
       };
 
@@ -29,7 +30,7 @@ const AlertEditModal = props => {
             "Authorization": `Token ${localStorage.getItem("helloDanh_token")}`
           },
           body: JSON.stringify({
-            alert: singleAlert
+            alert: editAlert
           })
         })
         .then((alerts) =>
@@ -49,13 +50,13 @@ const AlertEditModal = props => {
               <Modal.Content>
                 <Form onSubmit={(e)=>updateAlert(e,props.alertId)}>
                   <Form.Input
-                    onChange={e => setAlert(e.target.value)}
+                    onChange={e => setEditAlert(e.target.value)}
                     id="singleAlert"
                     className="form-control"
                     // icon="lock"
                     // iconPosition="left"
                     type="singleAlert"
-                    value={singleAlert.alert}
+                    defaultValue={alertObj.alert}
                   />
                   <Button content="Save" primary />
                 </Form>
