@@ -30,7 +30,7 @@ const AlertList = props => {
           <Card.Content>
           {
           alerts.map(myAlert =>
-            <AlertCard alert={myAlert} />
+            <AlertCard key={myAlert.id} alert={myAlert} getAlerts={getAlerts} />
         )}
           </Card.Content>
         </Card.Group>
