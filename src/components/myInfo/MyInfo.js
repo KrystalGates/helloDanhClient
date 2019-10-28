@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card } from "semantic-ui-react";
+import { Container, Card, Button } from "semantic-ui-react";
 
 const MyInfo = props => {
   const [myInfo, setMyInfo] = useState({user:{}});
@@ -21,25 +21,17 @@ const MyInfo = props => {
       getMyInfo()
   }, [])
 
-  console.log(myInfo)
-
   return (
     <>
       <Container>
-        <Card.Group itemsPerRow={4}>
-          {myInfo.user.first_name}
-          {myInfo.user.last_name}
-          {myInfo.user.email}
-          {myInfo.phone_number}
-          {myInfo.address}
-          {/* {
-          myInfo.map(info =>
-            (<p>
-
-                {info.address}
-            </p>)
-        )} */}
-        </Card.Group>
+        <h1>My Info</h1>
+        <Card.Description>
+          <Card.Header>{myInfo.user.first_name} {myInfo.user.last_name}</Card.Header>
+          <p>{myInfo.user.email}</p>
+          <p>{myInfo.phone_number}</p>
+          <p>{myInfo.address}</p>
+          <Button>Edit</Button>
+        </Card.Description>
       </Container>
     </>
   );

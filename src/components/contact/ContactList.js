@@ -21,13 +21,13 @@ const ContactList = props => {
 
   useEffect(getContacts, []);
 
-  console.log(contacts);
-
   return (
     <>
+    <h1>Contacts</h1>
       <AddContact {...props} />
       <Container>
-        <Card.Group itemsPerRow={4}>
+        <Card.Group itemsPerRow={1}>
+        <Card.Content>
           {
             contacts.map(contact =>
             <ContactCard
@@ -36,6 +36,7 @@ const ContactList = props => {
               key={contact.id}
             />
           )}
+          </Card.Content>
         </Card.Group>
       </Container>
     </>
