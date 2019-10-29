@@ -1,6 +1,7 @@
 import React from "react"
-import { Card, Button } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import ContactEditModal from "./ContactEditModal"
+import ContactDeleteModal from "./ContactDeleteModal"
 
 
 const ContactCard = props => {
@@ -12,7 +13,7 @@ const ContactCard = props => {
                 <p>{props.contact.address}</p>
                 <p>{props.contact.phone_number}</p>
                 <ContactEditModal contactId={props.contactId} getContacts={props.getContacts}/>
-                <Button>Delete</Button>
+                <ContactDeleteModal contactId={props.contactId} getContacts={props.getContacts}/>
         </Card.Description>
     )
 
