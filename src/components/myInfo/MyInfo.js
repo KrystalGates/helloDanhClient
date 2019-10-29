@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Button } from "semantic-ui-react";
+import MyInfoEditModal from "./MyInfoEditModal";
 
 const MyInfo = props => {
   const [myInfo, setMyInfo] = useState({user:{}});
@@ -30,7 +31,7 @@ const MyInfo = props => {
           <p>{myInfo.user.email}</p>
           <p>{myInfo.phone_number}</p>
           <p>{myInfo.address}</p>
-          <Button>Edit</Button>
+          <MyInfoEditModal myInfoId={myInfo.id} key={myInfo.id} getMyInfo={getMyInfo} />
         </Card.Description>
       </Container>
     </>
