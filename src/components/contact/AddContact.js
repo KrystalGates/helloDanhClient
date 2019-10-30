@@ -29,11 +29,7 @@ const AddContact = props => {
             })
                 .then(response => response.json())
                 .then((response) => {
-                  if("error" in response === true){
-                    alert("Contact was not added. Please try again.")
-                  } else{
-                    props.history.push("/contacts")
-                  }
+                 props.getContacts()
                 })
     }
 

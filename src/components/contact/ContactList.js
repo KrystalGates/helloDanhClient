@@ -24,7 +24,7 @@ const ContactList = props => {
   return (
     <>
     <h1>Contacts</h1>
-      <AddContact {...props} />
+      <AddContact getContacts={getContacts} {...props} />
       <Container>
         <Card.Group itemsPerRow={1}>
         <Card.Content>
