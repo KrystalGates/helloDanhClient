@@ -8,6 +8,11 @@ const MyInfoEditModal = props => {
     const [address, setAddress] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
     const [email, setEmail] = useState()
+    const [openForm, setOpenForm] = useState(false)
+
+    const toggle = () => {
+      setOpenForm(!openForm);
+    };
 
 
     const getMyInfo = () => {
@@ -21,7 +26,6 @@ const MyInfoEditModal = props => {
       })
         .then(res => res.json())
         .then(myInfo => {
-          console.log('console log my info',myInfo)
           setMyInfo(myInfo)
           setFirstName(myInfo.first_name)
           setLastName(myInfo.user.last_name)
@@ -40,7 +44,6 @@ const MyInfoEditModal = props => {
             "phone_number": +phoneNumber,
             "email": email
         }
-        console.log('edit info', editMyInfo)
         fetch(`http://127.0.0.1:8000/customusers/${props.myInfoId}` ,{
           method: "PUT",
           headers: {
@@ -53,7 +56,9 @@ const MyInfoEditModal = props => {
           )
         })
         .then((myInfo) =>
-            props.getMyInfo(myInfo)
+           { props.getMyInfo(myInfo)
+            getMyInfo()
+            toggle()}
         )
     }
 
@@ -62,7 +67,7 @@ const MyInfoEditModal = props => {
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button>Edit</Button>}
+              trigger={<Button content="Edit" onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>Update My Info</Modal.Header>
               <Modal.Content>
@@ -113,6 +118,7 @@ const MyInfoEditModal = props => {
                     defaultValue={myInfo.user.email}
                   />
                   <Button content="Save" primary />
+                  <Button content="Cancel" primary onClick={toggle}/>
                 </Form>
               </Modal.Content>
             </Modal>

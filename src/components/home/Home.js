@@ -3,10 +3,16 @@ import * as emailjs from "emailjs-com";
 import { Button, Confirm } from "semantic-ui-react";
 
 const Home = props => {
+  const [modalOpen, setModal] = useState({modalOpen: true})
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [contactsEmails, setContactsEmails] = useState("")
   const subject = "this subject";
+  const [openForm, setOpenForm] = useState(false)
+
+    const toggle = () => {
+      setOpenForm(!openForm);
+    };
 
   const getUserAndContacts = () => {
     fetch("http://127.0.0.1:8000/customusers/currentuser", {
@@ -46,7 +52,6 @@ const Home = props => {
     )
       .then(res => res.json())
       .then(alertPlacement => {
-        console.log("alert placement", alertPlacement.alert);
         const emailInfo = {
           subject: subject,
           email_to: contactsEmails,
@@ -54,17 +59,18 @@ const Home = props => {
           user_email: userEmail,
           alert: alertPlacement.alert
         };
-        console.log("emailinfo", emailInfo);
         emailjs.init("user_B0VxAQOSidaRDroTGISIj");
 
         emailjs.send(service_id, template_id, emailInfo).then(
           function(response) {
+            toggle()
             window.alert(
               "Success! The world is a better place because of you!",
               response.text
             );
           },
           function(error) {
+            toggle()
             window.alert("Compliment Email Failed...", error);
           }
         );
@@ -73,16 +79,15 @@ const Home = props => {
 
 
   useEffect(getUserAndContacts, []);
-  console.log("user name", userName);
-  console.log("user email", userEmail);
-  console.log('all emails', contactsEmails)
 
   return (
     <>
       <p>
         <Confirm
-          trigger={<Button>Red</Button>}
-          className="conf"
+          trigger={<Button content="Red" onClick={toggle}/>}
+          open={openForm}
+          onCancel={toggle}
+          className="confRed"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(1)}
           content="Are you sure you want to send this alert?"
@@ -90,15 +95,19 @@ const Home = props => {
       </p>
       <p>
         <Confirm
-          trigger={<Button>Yellow</Button>}
-          className="conf"
+          trigger={<Button content="Yellow" onClick={toggle}/>}
+          open={openForm}
+          onCancel={toggle}
+          className="confYellow"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(2)}
           content="Are you sure you want to send this alert?"
         />
         <Confirm
-          trigger={<Button>Green</Button>}
-          className="conf"
+          trigger={<Button content="Green" onClick={toggle}/>}
+          open={openForm}
+          onCancel={toggle}
+          className="confGreen"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(3)}
           content="Are you sure you want to send this alert?"

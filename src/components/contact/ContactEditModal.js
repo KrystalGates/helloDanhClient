@@ -4,11 +4,15 @@ import { Button, Modal, Form } from "semantic-ui-react"
 const ContactEditModal = props => {
     const [editSingleContact, setContact] = useState([])
     const [firstName, setFirstName] = useState()
-
     const [lastName, setLastName] = useState()
     const [address, setAddress] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
     const [email, setEmail] = useState()
+    const [openForm, setOpenForm] = useState(false)
+
+    const toggle = () => {
+      setOpenForm(!openForm);
+    };
 
     const getContact = () => {
         fetch(`http://127.0.0.1:8000/contacts/${props.contactId}`, {
@@ -55,14 +59,15 @@ const ContactEditModal = props => {
         .then((contacts) =>
             props.getContacts(contacts)
         )
-        .then((contact)=> getContact(props.contactId))
+        .then((contact)=> {getContact(props.contactId)
+        toggle()})
     }
 
     useEffect(getContact, []);
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button>Edit</Button>}
+              trigger={<Button content="Edit" onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>Update Contact</Modal.Header>
               <Modal.Content>
@@ -113,6 +118,7 @@ const ContactEditModal = props => {
                     defaultValue={editSingleContact.email}
                   />
                   <Button content="Save" primary />
+                  <Button content="Cancel" onClick={toggle} primary/>
                 </Form>
               </Modal.Content>
             </Modal>
