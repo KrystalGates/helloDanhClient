@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from "react"
 import { Button, Modal, Form } from "semantic-ui-react"
-import MyInfo from "./MyInfo";
 
 const MyInfoEditModal = props => {
     const [myInfo, setMyInfo] = useState({user:{}});
