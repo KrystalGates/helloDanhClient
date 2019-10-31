@@ -7,6 +7,11 @@ const AddContact = props => {
     const [lastName, setLastName] = useState()
     const [address, setAddress] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
+    const [openForm, setOpenForm] = useState(false)
+
+    const toggle = () => {
+      setOpenForm(!openForm);
+    };
 
     const handleNewContact = (e) => {
         e.preventDefault()
@@ -30,6 +35,7 @@ const AddContact = props => {
                 .then(response => response.json())
                 .then((response) => {
                  props.getContacts()
+                 toggle()
                 })
     }
 
@@ -37,7 +43,7 @@ const AddContact = props => {
     return (
         <Modal id="contact_form"
               size="tiny"
-              trigger={<Button content='Add Contact'></Button>}
+              trigger={<Button content='Add Contact' onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>New Contact</Modal.Header>
               <Modal.Content>
@@ -50,6 +56,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="First Name"
                     placeholder="First Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setLastName(e.target.value)}
@@ -59,6 +66,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Last Name"
                     placeholder="Last Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setAddress(e.target.value)}
@@ -77,6 +85,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Phone Number"
                     placeholder="Phone Number"
+                    required
                   />
                   <Form.Input
                     onChange={e => setEmail(e.target.value)}
@@ -86,8 +95,10 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Email"
                     placeholder="Email"
+                    required
                   />
-                  <Button content="Add" primary />
+                  <Button content="Add" primary/>
+                  <Button content="Cancel" onClick={toggle} primary/>
                 </Form>
               </Modal.Content>
             </Modal>

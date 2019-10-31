@@ -8,9 +8,14 @@ const MyInfoEditModal = props => {
     const [address, setAddress] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
     const [email, setEmail] = useState()
+    const [openMyInfoForm, setOpenMyInfoForm] = useState(false)
+
+    const toggleEditMyInfo = () => {
+      setOpenMyInfoForm(!openMyInfoForm);
+    };
 
 
-    const getMyInfo = () => {
+    const getMyInfoEditForm = () => {
       fetch("http://127.0.0.1:8000/customusers/currentuser", {
         method: "GET",
         headers: {
@@ -21,7 +26,6 @@ const MyInfoEditModal = props => {
       })
         .then(res => res.json())
         .then(myInfo => {
-          console.log('console log my info',myInfo)
           setMyInfo(myInfo)
           setFirstName(myInfo.first_name)
           setLastName(myInfo.user.last_name)
@@ -40,7 +44,6 @@ const MyInfoEditModal = props => {
             "phone_number": +phoneNumber,
             "email": email
         }
-        console.log('edit info', editMyInfo)
         fetch(`http://127.0.0.1:8000/customusers/${props.myInfoId}` ,{
           method: "PUT",
           headers: {
@@ -53,16 +56,18 @@ const MyInfoEditModal = props => {
           )
         })
         .then((myInfo) =>
-            props.getMyInfo(myInfo)
+           { props.getMyInfo(myInfo)
+            getMyInfoEditForm()
+            toggleEditMyInfo()}
         )
     }
 
-    useEffect(getMyInfo, []);
+    useEffect(getMyInfoEditForm, []);
 
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button>Edit</Button>}
+              trigger={<Button content="Edit" onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
             >
               <Modal.Header>Update My Info</Modal.Header>
               <Modal.Content>
@@ -113,6 +118,7 @@ const MyInfoEditModal = props => {
                     defaultValue={myInfo.user.email}
                   />
                   <Button content="Save" primary />
+                  <Button content="Cancel" primary onClick={toggleEditMyInfo}/>
                 </Form>
               </Modal.Content>
             </Modal>

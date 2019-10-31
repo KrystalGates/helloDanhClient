@@ -1,4 +1,5 @@
 import React, { useState} from "react"
+import {withRouter} from "react-router-dom"
 import { Button, Modal, Form } from "semantic-ui-react"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
 
@@ -14,15 +15,21 @@ const Register = props => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        const newUser = {
-            "first_name": firstName,
-            "last_name": lastName,
-            "address": address,
-            "phone_number": +phoneNumber,
-            "email": email,
-            "password": password
+        if (password === verifyPassword){
+          const newUser = {
+              "first_name": firstName,
+              "last_name": lastName,
+              "address": address,
+              "phone_number": +phoneNumber,
+              "email": email,
+              "password": password
+          }
+          register(newUser, props.setIsLoggedIn)
+          props.history.push("/")
         }
-        register(newUser, props.setIsLoggedIn)
+        else{
+          window.alert("Your passwords don't match. Please try again")
+        }
     }
 
     return (
@@ -41,6 +48,7 @@ const Register = props => {
                     iconPosition="left"
                     label="First Name"
                     placeholder="First Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setLastName(e.target.value)}
@@ -50,6 +58,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Last Name"
                     placeholder="Last Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setAddress(e.target.value)}
@@ -59,6 +68,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Address"
                     placeholder="Address"
+                    required
                   />
                   <Form.Input
                     onChange={e => setPhoneNumber(e.target.value)}
@@ -68,6 +78,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Phone Number"
                     placeholder="Phone Number"
+                    required
                   />
                   <Form.Input
                     onChange={e => setEmail(e.target.value)}
@@ -77,6 +88,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Email"
                     placeholder="Email"
+                    required
                   />
                   <Form.Input
                     onChange={e => setPassword(e.target.value)}
@@ -86,6 +98,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Password"
                     type="password"
+                    required
                   />
                   <Form.Input
                     onChange={e => setVerifyPassword(e.target.value)}
@@ -95,6 +108,7 @@ const Register = props => {
                     iconPosition="left"
                     label="Verify Password"
                     type="password"
+                    required
                   />
                   <Button content="Register" primary />
                 </Form>
@@ -103,4 +117,4 @@ const Register = props => {
     )
 }
 
-export default Register
+export default withRouter(Register)

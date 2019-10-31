@@ -1,7 +1,13 @@
-import React from "react"
-import { Button, Modal, Form } from "semantic-ui-react"
+import React, {useState} from "react"
+import { Button, Confirm } from "semantic-ui-react"
 
 const ContactDeleteModal = props => {
+  const [openForm, setOpenForm] = useState(false)
+
+    const toggle = () => {
+      setOpenForm(!openForm);
+    };
+
     const deleteContact = () => {
             fetch(`http://127.0.0.1:8000/contacts/${props.contactId}`, {
               method: "DELETE",
@@ -15,17 +21,15 @@ const ContactDeleteModal = props => {
           };
 
     return(
-        <Modal id="contact_edit_form"
-              size="tiny"
-              trigger={<Button>Delete</Button>}
-            >
-              <Modal.Header>Are you sure you want to delete this contact?</Modal.Header>
-              <Modal.Content>
-                <Form onSubmit={()=>deleteContact()}>
-                  <Button content="Yes" primary />
-                </Form>
-              </Modal.Content>
-            </Modal>
+      <Confirm
+          trigger={<Button content="Delete" onClick={toggle}/>}
+          open={openForm}
+          onCancel={toggle}
+          className="conf"
+          style={{ textAlign: "center" }}
+          onConfirm={() => deleteContact()}
+          content="Are you sure you want to delete this contact?"
+        />
     )
 
 }
