@@ -3,15 +3,24 @@ import * as emailjs from "emailjs-com";
 import { Button, Confirm } from "semantic-ui-react";
 
 const Home = props => {
-  const [modalOpen, setModal] = useState({modalOpen: true})
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [contactsEmails, setContactsEmails] = useState("")
   const subject = "this subject";
-  const [openForm, setOpenForm] = useState(false)
+  const [confirmRed, setConfirmRed] = useState(false)
+  const [confirmYellow, setConfirmYellow] = useState(false)
+  const [confirmGreen, setConfirmGreen] = useState(false)
 
-    const toggle = () => {
-      setOpenForm(!openForm);
+  const toggleRed = () => {
+    setConfirmRed(!confirmRed);
+  };
+
+  const toggleYellow = () => {
+    setConfirmYellow(!confirmYellow);
+  };
+
+    const toggleGreen = () => {
+      setConfirmGreen(!confirmGreen);
     };
 
   const getUserAndContacts = () => {
@@ -35,7 +44,7 @@ const Home = props => {
       });
   };
 
-  const sendEmail = alert_placement_id => {
+  const sendEmail = (alert_placement_id, toggle) => {
     const service_id = "fromHelloDanh";
     const template_id = "hellodanh";
 
@@ -59,6 +68,15 @@ const Home = props => {
           user_email: userEmail,
           alert: alertPlacement.alert
         };
+        if (alert_placement_id === 1){
+          toggleRed()
+        }
+        else if (alert_placement_id === 2){
+          toggleYellow()
+        }
+        else if (alert_placement_id === 3 ){
+          toggleGreen()
+        }
         emailjs.init("user_B0VxAQOSidaRDroTGISIj");
 
         emailjs.send(service_id, template_id, emailInfo).then(
@@ -70,7 +88,7 @@ const Home = props => {
             );
           },
           function(error) {
-            toggle()
+           toggle()
             window.alert("Compliment Email Failed...", error);
           }
         );
@@ -80,13 +98,19 @@ const Home = props => {
 
   useEffect(getUserAndContacts, []);
 
+  // get confused on toggle if all three confirms have the same
+  // make sure after login go to home page
+  // after register go to home page
+  // introduction page after login?
+  // edit my info not working all of the time
+
   return (
     <>
       <p>
         <Confirm
-          trigger={<Button content="Red" onClick={toggle}/>}
-          open={openForm}
-          onCancel={toggle}
+          trigger={<Button content="Red" onClick={toggleRed}/>}
+          open={confirmRed}
+          onCancel={toggleRed}
           className="confRed"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(1)}
@@ -95,18 +119,18 @@ const Home = props => {
       </p>
       <p>
         <Confirm
-          trigger={<Button content="Yellow" onClick={toggle}/>}
-          open={openForm}
-          onCancel={toggle}
+          trigger={<Button content="Yellow" onClick={toggleYellow}/>}
+          open={confirmYellow}
+          onCancel={toggleYellow}
           className="confYellow"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(2)}
           content="Are you sure you want to send this alert?"
         />
         <Confirm
-          trigger={<Button content="Green" onClick={toggle}/>}
-          open={openForm}
-          onCancel={toggle}
+          trigger={<Button content="Green" onClick={toggleGreen}/>}
+          open={confirmGreen}
+          onCancel={toggleGreen}
           className="confGreen"
           style={{ textAlign: "center" }}
           onConfirm={() => sendEmail(3)}

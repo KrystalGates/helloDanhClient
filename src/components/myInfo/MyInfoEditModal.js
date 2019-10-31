@@ -8,14 +8,14 @@ const MyInfoEditModal = props => {
     const [address, setAddress] = useState()
     const [phoneNumber, setPhoneNumber] = useState()
     const [email, setEmail] = useState()
-    const [openForm, setOpenForm] = useState(false)
+    const [openMyInfoForm, setOpenMyInfoForm] = useState(false)
 
-    const toggle = () => {
-      setOpenForm(!openForm);
+    const toggleEditMyInfo = () => {
+      setOpenMyInfoForm(!openMyInfoForm);
     };
 
 
-    const getMyInfo = () => {
+    const getMyInfoEditForm = () => {
       fetch("http://127.0.0.1:8000/customusers/currentuser", {
         method: "GET",
         headers: {
@@ -57,17 +57,17 @@ const MyInfoEditModal = props => {
         })
         .then((myInfo) =>
            { props.getMyInfo(myInfo)
-            getMyInfo()
-            toggle()}
+            getMyInfoEditForm()
+            toggleEditMyInfo()}
         )
     }
 
-    useEffect(getMyInfo, []);
+    useEffect(getMyInfoEditForm, []);
 
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" onClick={toggle}/>} open={openForm}
+              trigger={<Button content="Edit" onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
             >
               <Modal.Header>Update My Info</Modal.Header>
               <Modal.Content>
@@ -118,7 +118,7 @@ const MyInfoEditModal = props => {
                     defaultValue={myInfo.user.email}
                   />
                   <Button content="Save" primary />
-                  <Button content="Cancel" primary onClick={toggle}/>
+                  <Button content="Cancel" primary onClick={toggleEditMyInfo}/>
                 </Form>
               </Modal.Content>
             </Modal>

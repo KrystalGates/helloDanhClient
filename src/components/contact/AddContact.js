@@ -56,6 +56,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="First Name"
                     placeholder="First Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setLastName(e.target.value)}
@@ -65,6 +66,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Last Name"
                     placeholder="Last Name"
+                    required
                   />
                   <Form.Input
                     onChange={e => setAddress(e.target.value)}
@@ -83,6 +85,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Phone Number"
                     placeholder="Phone Number"
+                    required
                   />
                   <Form.Input
                     onChange={e => setEmail(e.target.value)}
@@ -92,6 +95,7 @@ const AddContact = props => {
                     iconPosition="left"
                     label="Email"
                     placeholder="Email"
+                    required
                   />
                   <Button content="Add" primary/>
                   <Button content="Cancel" onClick={toggle} primary/>

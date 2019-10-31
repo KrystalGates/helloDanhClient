@@ -44,7 +44,6 @@ const ContactEditModal = props => {
             "phone_number": +phoneNumber,
             "email": email
         }
-        console.log("edit contact",editContact)
         fetch(`http://127.0.0.1:8000/contacts/${contactId}` ,{
           method: "PUT",
           headers: {
