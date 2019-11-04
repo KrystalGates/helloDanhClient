@@ -4,6 +4,7 @@ import useSimpleAuth from "./hooks/ui/useSimpleAuth";
 import Login from "./components/auth/Login";
 import NavBar from "./components/nav/NavBar";
 
+
 const HelloDanhProject = props => {
   const [loggedIn, setIsLoggedIn] = useState(false)
   const { isAuthenticated } = useSimpleAuth();
