@@ -5,10 +5,13 @@ import AlertEditModal from "./AlertEditModal"
 
 const AlertCard = props => {
     return (
-        <Card.Description>
+        <Card>
+
+        <Card.Content>
             <Card.Header>{props.alert.alert}</Card.Header>
                 <AlertEditModal alertId={props.alert.id} getAlerts={props.getAlerts}/>
-        </Card.Description>
+        </Card.Content>
+        </Card>
     )
 
 }

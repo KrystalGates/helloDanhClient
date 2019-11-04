@@ -34,7 +34,7 @@ const Login = props => {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
           <Image src={helloDanhRed} size='small' centered />
-        <Header as="h2" style={{color: "#ff5757"}}  textAlign="center">Log-in to your account
+        <Header as="h2" style={{color: "#ff5757"}}  textAlign="center">
         </Header>
         <Form size="large" onSubmit={handleLogin}>
           <Segment stacked>

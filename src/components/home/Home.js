@@ -121,7 +121,7 @@ const Home = props => {
       </Grid.Row>
       <Grid.Row centered>
         <Confirm
-          trigger={<Image src={helloDanhYellow} style={{marginRight: '10em', cursor: 'pointer'}} size='small' onClick={toggleYellow}/>}
+          trigger={<Image src={helloDanhYellow} style={{marginRight: '10em'}} size='small' onClick={toggleYellow}/>}
           open={confirmYellow}
           onCancel={toggleYellow}
           className="confYellow"

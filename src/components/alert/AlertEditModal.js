@@ -63,7 +63,8 @@ const AlertEditModal = props => {
                     type="singleAlert"
                     defaultValue={alertObj.alert}
                   />
-                  <Button content="Save" primary />
+                  <Button content="Save"  />
+                  <Button content="Cancel" onClick={toggle} />
                 </Form>
               </Modal.Content>
             </Modal>

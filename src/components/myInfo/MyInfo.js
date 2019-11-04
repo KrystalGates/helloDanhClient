@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card } from "semantic-ui-react";
+import { Container, Card, Header } from "semantic-ui-react";
 import MyInfoEditModal from "./MyInfoEditModal";
 
 const MyInfo = props => {
@@ -25,7 +25,7 @@ const MyInfo = props => {
   return (
     <>
       <Container>
-        <h1>My Info</h1>
+      <Header as="h1" textAlign='center'>My Info</Header>
         <Card.Description>
           <Card.Header>{myInfo.user.first_name} {myInfo.user.last_name}</Card.Header>
           <p>{myInfo.user.email}</p>
