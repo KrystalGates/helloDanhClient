@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown, Image } from 'semantic-ui-react'
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
+import helloDanhRed from '../../icons/helloDanhRed.svg'
 
 const NavBar = props => {
   const { logout } = useSimpleAuth()
@@ -11,20 +12,14 @@ const NavBar = props => {
         <div>
         <Menu pointing secondary>
           <Menu.Item
-            name='home' as={Link} to="/"
-            // active={activeItem === 'home'}
-            // onClick={this.handleItemClick}
-          />
+           as={Link} to="/">
+          <Image size='small' src={helloDanhRed} style={{ marginRight: '1.5em' }} />
+
+           </Menu.Item>
           <Menu.Menu position='right'>
-            {/* <Menu.Item
-              name='login'
-              as={Link} to="/login"
-            //   active={activeItem === 'logout'}
-            //   onClick=<Link className="nav-link" to="/register">Register</Link>
-            /> */}
           </Menu.Menu>
           <Dropdown item text='My Settings'>
-          <Dropdown.Menu>
+          <Dropdown.Menu >
             <Dropdown.Item name='contacts' as={Link} to="/contacts">Contacts</Dropdown.Item>
             <Dropdown.Item name='alerts' as={Link} to="/alerts">Alerts</Dropdown.Item>
             <Dropdown.Item name='MyInfo' as={Link} to="/MyInfo">My Info</Dropdown.Item>

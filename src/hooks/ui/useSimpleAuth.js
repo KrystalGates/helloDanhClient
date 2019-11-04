@@ -11,17 +11,12 @@ const useSimpleAuth = () => {
             },
             body: JSON.stringify(userInfo)
         })
-            .then(res => res.json()
-            )
+            .then(res => res.json())
             .then(res => {
                 if ("token" in res) {
                     localStorage.setItem( "helloDanh_token", res.token )
                     setIsLoggedIn(true)
                 }
-            }).catch(error =>{
-                window.alert(
-                    "This email is already taken. Please use a different one.",
-                  );
             })
     }
 
@@ -41,9 +36,7 @@ const useSimpleAuth = () => {
                     setIsLoggedIn(true)
                 }
                 else{
-                    window.alert(
-                        "Incorrect email or password",
-                      );
+                    window.alert("Your email or password is invalid. Please try again.")
                 }
             })
     }

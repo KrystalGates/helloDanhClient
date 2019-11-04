@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import * as emailjs from "emailjs-com";
-import { Button, Confirm } from "semantic-ui-react";
+import { Button, Confirm, Image } from "semantic-ui-react";
+import helloDanhRed from '../../icons/helloDanhRed.svg'
+import helloDanhYellow from '../../icons/helloDanhYellow.svg'
+import helloDanhGreen from '../../icons/helloDanhGreen.svg'
 
 const Home = props => {
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [contactsEmails, setContactsEmails] = useState("")
-  const subject = "this subject";
   const [confirmRed, setConfirmRed] = useState(false)
   const [confirmYellow, setConfirmYellow] = useState(false)
   const [confirmGreen, setConfirmGreen] = useState(false)
@@ -47,68 +49,68 @@ const Home = props => {
   const sendEmail = (alert_placement_id, toggle) => {
     const service_id = "fromHelloDanh";
     const template_id = "hellodanh";
-
-    fetch(
-      `http://127.0.0.1:8000/alerts?alert_placement_id=${alert_placement_id}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Token ${localStorage.getItem("helloDanh_token")}`
-        }
-      }
-    )
-      .then(res => res.json())
-      .then(alertPlacement => {
-        const emailInfo = {
-          subject: subject,
-          email_to: contactsEmails,
-          user_name: userName,
-          user_email: userEmail,
-          alert: alertPlacement.alert
-        };
-        if (alert_placement_id === 1){
-          toggleRed()
-        }
-        else if (alert_placement_id === 2){
-          toggleYellow()
-        }
-        else if (alert_placement_id === 3 ){
-          toggleGreen()
-        }
-        emailjs.init("user_B0VxAQOSidaRDroTGISIj");
-
-        emailjs.send(service_id, template_id, emailInfo).then(
-          function(response) {
-            toggle()
-            window.alert(
-              "Success! The world is a better place because of you!",
-              response.text
-            );
-          },
-          function(error) {
-           toggle()
-            window.alert("Compliment Email Failed...", error);
+    console.log('contacts emails', contactsEmails)
+    if (contactsEmails === ""){
+      window.alert("You must add contacts before sending out an alert!")
+      props.history.push("/contacts")
+    }
+    else{
+      fetch(
+        `http://127.0.0.1:8000/alerts?alert_placement_id=${alert_placement_id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Token ${localStorage.getItem("helloDanh_token")}`
           }
-        );
-      });
+        }
+      )
+        .then(res => res.json())
+        .then(alertPlacement => {
+          const emailInfo = {
+            subject: alertPlacement.subject,
+            email_to: contactsEmails,
+            user_name: userName,
+            user_email: userEmail,
+            alert: alertPlacement.alert
+          };
+          if (alert_placement_id === 1){
+            toggleRed()
+          }
+          else if (alert_placement_id === 2){
+            toggleYellow()
+          }
+          else if (alert_placement_id === 3 ){
+            toggleGreen()
+          }
+          emailjs.init("user_B0VxAQOSidaRDroTGISIj");
+
+          emailjs.send(service_id, template_id, emailInfo).then(
+            function(response) {
+              window.alert(
+                "Your alert has been sent!",
+                response.text
+              );
+            },
+            function(error) {
+              window.alert("Alert failed to send.", error);
+            }
+          );
+        });
+
+    }
+
   };
 
 
   useEffect(getUserAndContacts, []);
 
-  // get confused on toggle if all three confirms have the same
-  // make sure after login go to home page
-  // after register go to home page
-  // introduction page after login?
-  // edit my info not working all of the time
-
   return (
     <>
       <p>
         <Confirm
-          trigger={<Button content="Red" onClick={toggleRed}/>}
+          trigger={<Image src={helloDanhRed} onClick={toggleRed}/>}
           open={confirmRed}
           onCancel={toggleRed}
           className="confRed"
@@ -119,7 +121,7 @@ const Home = props => {
       </p>
       <p>
         <Confirm
-          trigger={<Button content="Yellow" onClick={toggleYellow}/>}
+          trigger={<Image src={helloDanhYellow} onClick={toggleYellow}/>}
           open={confirmYellow}
           onCancel={toggleYellow}
           className="confYellow"
@@ -128,7 +130,7 @@ const Home = props => {
           content="Are you sure you want to send this alert?"
         />
         <Confirm
-          trigger={<Button content="Green" onClick={toggleGreen}/>}
+          trigger={<Image src={helloDanhGreen} onClick={toggleGreen}/>}
           open={confirmGreen}
           onCancel={toggleGreen}
           className="confGreen"

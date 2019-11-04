@@ -24,7 +24,9 @@ const Register = props => {
               "email": email,
               "password": password
           }
-          register(newUser, props.setIsLoggedIn)
+          register(newUser, props.setIsLoggedIn).catch(error=>{
+            window.alert("This email is already in use.")
+          })
           props.history.push("/")
         }
         else{
