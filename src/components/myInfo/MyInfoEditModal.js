@@ -67,7 +67,7 @@ const MyInfoEditModal = props => {
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
+              trigger={<Button content="Edit" style={{marginTop:"70%", marginLeft:"2em"}} onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
             >
               <Modal.Header>Update My Info</Modal.Header>
               <Modal.Content>
