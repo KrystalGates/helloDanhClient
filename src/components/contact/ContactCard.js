@@ -1,33 +1,45 @@
 import React from "react";
-import { Card,Grid } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 import ContactEditModal from "./ContactEditModal";
 import ContactDeleteModal from "./ContactDeleteModal";
 
 const ContactCard = props => {
   return (
     <Card>
-      <Card.Description>
-        <Grid>
-          <Grid.Column>
-            <Card.Header>
-              {props.contact.first_name} {props.contact.last_name}
-            </Card.Header>
-            <p>{props.contact.email}</p>
-            <p>{props.contact.address}</p>
-            <p>{props.contact.phone_number}</p>
-          </Grid.Column>
-          <Grid.Column>
-            <ContactEditModal
-              contactId={props.contactId}
-              getContacts={props.getContacts}
-            />
-            <ContactDeleteModal
-              contactId={props.contactId}
-              getContacts={props.getContacts}
-            />
-          </Grid.Column>
+      <Card.Content>
+        <Grid container columns={2}>
+          <Grid.Row>
+            <Grid.Column>
+              <Card.Header style={{ fontSize: "22px", fontWeight: 650 }}>
+                {props.contact.first_name} {props.contact.last_name}
+              </Card.Header>
+              <Card.Description>
+                <div>{props.contact.email}</div>
+                <div>{props.contact.address}</div>
+                <div>{props.contact.phone_number}</div>
+              </Card.Description>
+            </Grid.Column>
+            <Grid.Column>
+              <Grid container columns={1}>
+                <Grid.Column>
+                  <Grid.Row verticalAlign="top">
+                    <ContactEditModal
+                      contactId={props.contactId}
+                      getContacts={props.getContacts}
+                    />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <ContactDeleteModal
+                      contactId={props.contactId}
+                      getContacts={props.getContacts}
+                    />
+                  </Grid.Row>
+                </Grid.Column>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
-      </Card.Description>
+      </Card.Content>
     </Card>
   );
 };

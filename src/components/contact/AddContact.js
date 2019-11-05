@@ -43,7 +43,7 @@ const AddContact = props => {
     return (
         <Modal id="contact_form"
               size="tiny"
-              trigger={<Button content='Add Contact' alignContent='center' onClick={toggle}/>} open={openForm}
+              trigger={<Button content='Add Contact' onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>New Contact</Modal.Header>
               <Modal.Content>

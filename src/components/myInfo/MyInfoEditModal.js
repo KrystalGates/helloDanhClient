@@ -63,7 +63,7 @@ const MyInfoEditModal = props => {
     }
 
     useEffect(getMyInfoEditForm, []);
-    
+
     return (
         <Modal id="contact_edit_form"
               size="tiny"
@@ -117,8 +117,8 @@ const MyInfoEditModal = props => {
                     label="Email"
                     defaultValue={myInfo.user.email}
                   />
-                  <Button content="Save" primary />
-                  <Button content="Cancel" primary onClick={toggleEditMyInfo}/>
+                  <Button content="Save" />
+                  <Button content="Cancel" onClick={toggleEditMyInfo}/>
                 </Form>
               </Modal.Content>
             </Modal>
