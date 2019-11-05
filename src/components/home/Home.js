@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as emailjs from "emailjs-com";
-import { Button, Confirm, Image, Grid } from "semantic-ui-react";
+import { Confirm, Image, Grid } from "semantic-ui-react";
 import helloDanhRed from '../../icons/helloDanhRed.png'
 import helloDanhYellow from '../../icons/helloDanhYellow.png'
 import helloDanhGreen from '../../icons/helloDanhGreen.png'
@@ -110,7 +110,7 @@ const Home = props => {
     <Grid>
       <Grid.Row centered>
         <Confirm
-          trigger={<Image src={helloDanhRed} style={{marginTop: '2em', marginBottom: '-3em'}} size='medium' onClick={toggleRed}/>}
+          trigger={<Image src={helloDanhRed} className="img-hover-zoom" style={{marginTop: '2em', marginBottom: '-3em'}} size='medium' onClick={toggleRed}/>}
           open={confirmRed}
           onCancel={toggleRed}
           className="confRed"
@@ -121,7 +121,7 @@ const Home = props => {
       </Grid.Row>
       <Grid.Row centered>
         <Confirm
-          trigger={<Image src={helloDanhYellow} style={{marginRight: '10em'}} size='small' onClick={toggleYellow}/>}
+          trigger={<Image src={helloDanhYellow} className="img-hover-zoom" style={{marginRight: '10em'}} size='small' onClick={toggleYellow}/>}
           open={confirmYellow}
           onCancel={toggleYellow}
           className="confYellow"
@@ -130,7 +130,7 @@ const Home = props => {
           content="Are you sure you want to send this alert?"
         />
         <Confirm
-          trigger={<Image src={helloDanhGreen} size='small' onClick={toggleGreen}/>}
+          trigger={<Image src={helloDanhGreen} className="img-hover-zoom" size='small' onClick={toggleGreen}/>}
           open={confirmGreen}
           onCancel={toggleGreen}
           className="confGreen"

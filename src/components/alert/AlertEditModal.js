@@ -51,19 +51,20 @@ const AlertEditModal = props => {
     return (
         <Modal id="alert_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" style={{marginTop:"75%", marginLeft:"-2em"}} onClick={toggle}/>} open={openForm}
+              trigger={<Button content="Edit" color="teal" style={{marginTop:"75%", marginLeft:"-2em"}} onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>Update Alert</Modal.Header>
               <Modal.Content>
                 <Form onSubmit={(e)=>updateAlert(e,props.alertId)}>
                   <TextArea
+                    rows={15}
                     onChange={e => setEditAlert(e.target.value)}
                     id="singleAlert"
                     className="form-control"
                     type="singleAlert"
                     defaultValue={alertObj.alert}
                   />
-                  <Button content="Save"  />
+                  <Button content="Save" color="teal" style={{marginTop:"1em"}} />
                   <Button content="Cancel" onClick={toggle} />
                 </Form>
               </Modal.Content>

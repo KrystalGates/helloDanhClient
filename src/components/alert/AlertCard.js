@@ -7,7 +7,7 @@ import helloDanhGreen from "../../icons/helloDanhGreen.png";
 
 const AlertCard = props => {
   return (
-    <Card>
+    <Card >
       <Card.Content>
         <Grid container centered columns={3}>
           <Grid.Row >
@@ -23,7 +23,7 @@ const AlertCard = props => {
               ) : null}
             </Grid.Column>
             <Grid.Column width={12} style={{textAlign:"left", border: ".08em solid #d4d4d5", borderRadius: "5px", marginRight:"3em"}}>
-              <Card.Description >{props.alert.alert}</Card.Description>
+              <Card.Description style={{height: "10em", overflow: "auto"}} >{props.alert.alert}</Card.Description>
             </Grid.Column>
             <Grid.Column width={1} >
               <AlertEditModal
