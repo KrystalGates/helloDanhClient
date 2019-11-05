@@ -66,7 +66,7 @@ const ContactEditModal = props => {
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" onClick={toggle}/>} open={openForm}
+              trigger={<Button content="Edit" style={{marginTop:"1px"}} onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>Update Contact</Modal.Header>
               <Modal.Content>

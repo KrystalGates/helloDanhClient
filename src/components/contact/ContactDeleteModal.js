@@ -22,7 +22,7 @@ const ContactDeleteModal = props => {
 
     return(
       <Confirm
-          trigger={<Button content="Delete" onClick={toggle}/>}
+          trigger={<Button content="Delete" style={{marginTop:"1em"}} onClick={toggle}/>}
           open={openForm}
           onCancel={toggle}
           className="conf"

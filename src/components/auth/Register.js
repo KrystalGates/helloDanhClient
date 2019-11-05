@@ -112,7 +112,7 @@ const Register = props => {
                     type="password"
                     required
                   />
-                  <Button content="Register" primary />
+                  <Button content="Register" />
                 </Form>
               </Modal.Content>
             </Modal>

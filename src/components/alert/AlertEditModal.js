@@ -51,7 +51,7 @@ const AlertEditModal = props => {
     return (
         <Modal id="alert_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" onClick={toggle}/>} open={openForm}
+              trigger={<Button content="Edit" style={{marginTop:"75%", marginLeft:"-2em"}} onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>Update Alert</Modal.Header>
               <Modal.Content>

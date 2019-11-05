@@ -9,7 +9,8 @@ const ContactCard = props => {
       <Card.Content>
         <Grid container columns={2}>
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column >
+              <div style={{marginLeft:"2em"}}>
               <Card.Header style={{ fontSize: "22px", fontWeight: 650 }}>
                 {props.contact.first_name} {props.contact.last_name}
               </Card.Header>
@@ -18,17 +19,19 @@ const ContactCard = props => {
                 <div>{props.contact.address}</div>
                 <div>{props.contact.phone_number}</div>
               </Card.Description>
+
+              </div>
             </Grid.Column>
             <Grid.Column>
               <Grid container columns={1}>
-                <Grid.Column>
-                  <Grid.Row verticalAlign="top">
+                <Grid.Column style={{marginRight:".5em"}}>
+                  <Grid.Row verticalAlign="right">
                     <ContactEditModal
                       contactId={props.contactId}
                       getContacts={props.getContacts}
                     />
                   </Grid.Row>
-                  <Grid.Row>
+                  <Grid.Row verticalAlign="right">
                     <ContactDeleteModal
                       contactId={props.contactId}
                       getContacts={props.getContacts}
