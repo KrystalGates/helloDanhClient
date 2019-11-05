@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header, Card, Container } from "semantic-ui-react";
 import AlertCard from "./AlertCard";
 
+//Renders 
 const AlertList = props => {
   const [alerts, setAlerts] = useState([]);
 
@@ -25,7 +26,7 @@ const AlertList = props => {
   return (
 
     <Container>
-    <Header as="h1" textAlign='center'>Alerts</Header>
+    <Header as="h1" textAlign='center'>Alerts </Header>
         <Card.Group itemsPerRow={1}>
           {
           alerts.map(myAlert =>
