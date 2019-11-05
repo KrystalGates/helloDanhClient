@@ -46,7 +46,7 @@ const Register = props => {
                     onChange={e => setFirstName(e.target.value)}
                     id="firstName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="First Name"
                     placeholder="First Name"
@@ -56,7 +56,7 @@ const Register = props => {
                     onChange={e => setLastName(e.target.value)}
                     id="lastName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="Last Name"
                     placeholder="Last Name"
@@ -66,7 +66,7 @@ const Register = props => {
                     onChange={e => setAddress(e.target.value)}
                     id="address"
                     className="form-control"
-                    icon="mail"
+                    icon="address book"
                     iconPosition="left"
                     label="Address"
                     placeholder="Address"
@@ -76,7 +76,7 @@ const Register = props => {
                     onChange={e => setPhoneNumber(e.target.value)}
                     id="phoneNumber"
                     className="form-control"
-                    icon="mail"
+                    icon="phone"
                     iconPosition="left"
                     label="Phone Number"
                     placeholder="Phone Number"
@@ -112,7 +112,7 @@ const Register = props => {
                     type="password"
                     required
                   />
-                  <Button content="Register" primary />
+                  <Button content="Register" color="teal" />
                 </Form>
               </Modal.Content>
             </Modal>

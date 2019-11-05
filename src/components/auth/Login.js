@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import Register from "./Register";
+import helloDanhRed from '../../icons/helloDanhRed.png'
 
 const Login = props => {
   const [email, setEmail] = useState();
@@ -32,8 +33,8 @@ const Login = props => {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          <Image src="/logo.png" /> Log-in to your account
+          <Image src={helloDanhRed} size='small' centered />
+        <Header as="h2" style={{color: "#ff5757"}}  textAlign="center">
         </Header>
         <Form size="large" onSubmit={handleLogin}>
           <Segment stacked>
@@ -55,7 +56,7 @@ const Login = props => {
               required
             />
 
-            <Button color="teal" fluid size="large" >
+            <Button style={{color: "#ff5757"}}  fluid size="large" >
               Login
             </Button>
           </Segment>

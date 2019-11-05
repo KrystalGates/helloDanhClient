@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { Menu, Dropdown, Image } from 'semantic-ui-react'
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
-import helloDanhRed from '../../icons/helloDanhRed.svg'
+import helloDanhNav from '../../icons/helloDanhNav.png'
 
 const NavBar = props => {
   const { logout } = useSimpleAuth()
@@ -10,15 +10,15 @@ const NavBar = props => {
   props.setIsLoggedIn(true)
     return (
         <div>
-        <Menu pointing secondary>
+        <Menu pointing secondary className="navBar">
           <Menu.Item
-           as={Link} to="/">
-          <Image size='small' src={helloDanhRed} style={{ marginRight: '1.5em' }} />
+           as={Link} to="/" >
+          <Image size='mini' src={helloDanhNav} style={{ marginRight: '1.5em' }} />
 
            </Menu.Item>
           <Menu.Menu position='right'>
           </Menu.Menu>
-          <Dropdown item text='My Settings'>
+          <Dropdown item text='My Settings' style={{marginBottom:".4em", marginRight: '1em'}}>
           <Dropdown.Menu >
             <Dropdown.Item name='contacts' as={Link} to="/contacts">Contacts</Dropdown.Item>
             <Dropdown.Item name='alerts' as={Link} to="/alerts">Alerts</Dropdown.Item>

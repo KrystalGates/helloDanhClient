@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card } from "semantic-ui-react";
+import { Container, Card, Header, Grid } from "semantic-ui-react";
 import AddContact from "./AddContact";
 import ContactCard from "./ContactCard";
 
@@ -23,11 +23,13 @@ const ContactList = props => {
 
   return (
     <>
-    <h1>Contacts</h1>
+    <Header as="h1" textAlign='center'>Contacts</Header>
+    <Grid centered column={1}>
       <AddContact getContacts={getContacts} {...props} />
+
+    </Grid>
       <Container>
-        <Card.Group itemsPerRow={1}>
-        <Card.Content>
+        <Card.Group itemsPerRow={1} style={{marginTop:'1em'}}>
           {
             contacts.map(contact =>
             <ContactCard
@@ -36,7 +38,6 @@ const ContactList = props => {
               key={contact.id} getContacts={getContacts} contactId={contact.id}
             />
           )}
-          </Card.Content>
         </Card.Group>
       </Container>
     </>

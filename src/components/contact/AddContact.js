@@ -43,7 +43,7 @@ const AddContact = props => {
     return (
         <Modal id="contact_form"
               size="tiny"
-              trigger={<Button content='Add Contact' onClick={toggle}/>} open={openForm}
+              trigger={<Button content='Add Contact' color="teal" style={{align: "center"}} onClick={toggle}/>} open={openForm}
             >
               <Modal.Header>New Contact</Modal.Header>
               <Modal.Content>
@@ -52,7 +52,7 @@ const AddContact = props => {
                     onChange={e => setFirstName(e.target.value)}
                     id="firstName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="First Name"
                     placeholder="First Name"
@@ -62,7 +62,7 @@ const AddContact = props => {
                     onChange={e => setLastName(e.target.value)}
                     id="lastName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="Last Name"
                     placeholder="Last Name"
@@ -72,7 +72,7 @@ const AddContact = props => {
                     onChange={e => setAddress(e.target.value)}
                     id="address"
                     className="form-control"
-                    icon="mail"
+                    icon="address book"
                     iconPosition="left"
                     label="Address"
                     placeholder="Address"
@@ -81,7 +81,7 @@ const AddContact = props => {
                     onChange={e => setPhoneNumber(e.target.value)}
                     id="phoneNumber"
                     className="form-control"
-                    icon="mail"
+                    icon="phone"
                     iconPosition="left"
                     label="Phone Number"
                     placeholder="Phone Number"
@@ -97,8 +97,8 @@ const AddContact = props => {
                     placeholder="Email"
                     required
                   />
-                  <Button content="Add" primary/>
-                  <Button content="Cancel" onClick={toggle} primary/>
+                  <Button content="Add" align='right' />
+                  <Button content="Cancel" onClick={toggle} />
                 </Form>
               </Modal.Content>
             </Modal>

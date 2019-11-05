@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card } from "semantic-ui-react";
+import { Header, Card, Container } from "semantic-ui-react";
 import AlertCard from "./AlertCard";
 
 const AlertList = props => {
@@ -23,19 +23,18 @@ const AlertList = props => {
   useEffect(()=>{getAlerts()}, [])
 
   return (
-    <>
-    <h1>Alerts</h1>
-      <Container>
+
+    <Container>
+    <Header as="h1" textAlign='center'>Alerts</Header>
         <Card.Group itemsPerRow={1}>
-          <Card.Content>
           {
           alerts.map(myAlert =>
             <AlertCard key={myAlert.id} alert={myAlert} getAlerts={getAlerts} />
         )}
-          </Card.Content>
         </Card.Group>
-      </Container>
-    </>
+
+    </Container>
+
   );
 };
 export default AlertList;

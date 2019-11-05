@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card } from "semantic-ui-react";
+import { Grid, Card, Header, Container } from "semantic-ui-react";
 import MyInfoEditModal from "./MyInfoEditModal";
 
 const MyInfo = props => {
-  const [myInfo, setMyInfo] = useState({user:{}});
+  const [myInfo, setMyInfo] = useState({ user: {} });
 
+  //Fetch call for current user info and sets state on useEffect
   const getMyInfo = () => {
     fetch("http://127.0.0.1:8000/customusers/currentuser", {
       method: "GET",
       headers: {
-        "Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
-        "Authorization": `Token ${localStorage.getItem("helloDanh_token")}`
+        Authorization: `Token ${localStorage.getItem("helloDanh_token")}`
       }
     })
       .then(res => res.json())
@@ -19,20 +20,47 @@ const MyInfo = props => {
   };
 
   useEffect(() => {
-      getMyInfo()
-  }, [])
+    getMyInfo();
+  }, []);
 
+  //Render My Info Card with current User information such as: full name, email,phone number,and address
   return (
     <>
+      <Header as="h1" textAlign="center">
+        My Info
+      </Header>
       <Container>
-        <h1>My Info</h1>
-        <Card.Description>
-          <Card.Header>{myInfo.user.first_name} {myInfo.user.last_name}</Card.Header>
-          <p>{myInfo.user.email}</p>
-          <p>{myInfo.phone_number}</p>
-          <p>{myInfo.address}</p>
-          <MyInfoEditModal myInfoId={myInfo.id} key={myInfo.id} getMyInfo={getMyInfo} />
-        </Card.Description>
+        <Card.Group itemsPerRow={1} style={{marginTop:'1em'}}>
+          <Card>
+            <Card.Content>
+              <Grid container column={2}>
+                <Grid.Row>
+                  <Grid.Column width={14}>
+                    <div>
+
+                    <Card.Header style={{ fontSize: "22px", fontWeight: 650 }}>
+                      {myInfo.user.first_name} {myInfo.user.last_name}
+                    </Card.Header>
+                    <Card.Description>
+                      <div>{myInfo.user.email}</div>
+                      <div>{myInfo.phone_number}</div>
+                      <div>{myInfo.address}</div>
+                    </Card.Description>
+                    </div>
+                  </Grid.Column>
+                  <Grid.Column width={1}>
+                    {/* My info Edit Modal. Open upon Edit button click*/}
+                    <MyInfoEditModal
+                      myInfoId={myInfo.id}
+                      key={myInfo.id}
+                      getMyInfo={getMyInfo}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Card.Content>
+          </Card>
+        </Card.Group>
       </Container>
     </>
   );

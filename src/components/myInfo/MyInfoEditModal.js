@@ -27,7 +27,7 @@ const MyInfoEditModal = props => {
         .then(res => res.json())
         .then(myInfo => {
           setMyInfo(myInfo)
-          setFirstName(myInfo.first_name)
+          setFirstName(myInfo.user.first_name)
           setLastName(myInfo.user.last_name)
           setAddress(myInfo.address)
           setPhoneNumber(myInfo.phone_number)
@@ -67,7 +67,7 @@ const MyInfoEditModal = props => {
     return (
         <Modal id="contact_edit_form"
               size="tiny"
-              trigger={<Button content="Edit" onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
+              trigger={<Button content="Edit" color="teal" style={{marginTop:"70%", marginLeft:"2em"}} onClick={toggleEditMyInfo}/>} open={openMyInfoForm}
             >
               <Modal.Header>Update My Info</Modal.Header>
               <Modal.Content>
@@ -76,7 +76,7 @@ const MyInfoEditModal = props => {
                     onChange={e => setFirstName(e.target.value)}
                     id="firstName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="First Name"
                     defaultValue={myInfo.user.first_name}
@@ -85,7 +85,7 @@ const MyInfoEditModal = props => {
                     onChange={e => setLastName(e.target.value)}
                     id="lastName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="Last Name"
                     defaultValue={myInfo.user.last_name}
@@ -94,7 +94,7 @@ const MyInfoEditModal = props => {
                     onChange={e => setAddress(e.target.value)}
                     id="address"
                     className="form-control"
-                    icon="mail"
+                    icon="address book"
                     iconPosition="left"
                     label="Address"
                     defaultValue={myInfo.address}
@@ -103,7 +103,7 @@ const MyInfoEditModal = props => {
                     onChange={e => setPhoneNumber(e.target.value)}
                     id="phoneNumber"
                     className="form-control"
-                    icon="mail"
+                    icon="phone"
                     iconPosition="left"
                     label="Phone Number"
                     defaultValue={myInfo.phone_number}
@@ -117,8 +117,8 @@ const MyInfoEditModal = props => {
                     label="Email"
                     defaultValue={myInfo.user.email}
                   />
-                  <Button content="Save" primary />
-                  <Button content="Cancel" primary onClick={toggleEditMyInfo}/>
+                  <Button content="Save" />
+                  <Button content="Cancel" onClick={toggleEditMyInfo}/>
                 </Form>
               </Modal.Content>
             </Modal>
