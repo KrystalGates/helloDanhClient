@@ -40,21 +40,21 @@ button.ui.button{
     color: gray;
 }
 
-img.ui.medium.image{
+img.ui.large.image.home{
     cursor: pointer;
     transition: transform .2s;
 }
-img.ui.medium.image:hover{
-        transform: scale(1.0323);
+img.ui.large.image.home:hover{
+        transform: scale(1.1);
 }
 
-img.ui.small.image{
+img.ui.medium.image.home{
     cursor: pointer;
     transition: transform .2s;
 }
 
-img.ui.small.image:hover{
-    transform: scale(1.0323);
+img.ui.medium.image:hover.home{
+    transform: scale(1.2);
 }
 
 pre{
