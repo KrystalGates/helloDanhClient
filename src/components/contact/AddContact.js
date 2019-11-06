@@ -97,7 +97,7 @@ const AddContact = props => {
                     placeholder="Email"
                     required
                   />
-                  <Button content="Add" align='right' />
+                  <Button content="Add" color="teal" align='right' />
                   <Button content="Cancel" onClick={toggle} />
                 </Form>
               </Modal.Content>

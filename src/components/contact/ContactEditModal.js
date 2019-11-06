@@ -75,7 +75,7 @@ const ContactEditModal = props => {
                     onChange={e => setFirstName(e.target.value)}
                     id="firstName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="First Name"
                     defaultValue={editSingleContact.first_name}
@@ -84,7 +84,7 @@ const ContactEditModal = props => {
                     onChange={e => setLastName(e.target.value)}
                     id="lastName"
                     className="form-control"
-                    icon="mail"
+                    icon="user"
                     iconPosition="left"
                     label="Last Name"
                     defaultValue={editSingleContact.last_name}
@@ -93,7 +93,7 @@ const ContactEditModal = props => {
                     onChange={e => setAddress(e.target.value)}
                     id="address"
                     className="form-control"
-                    icon="mail"
+                    icon="address book"
                     iconPosition="left"
                     label="Address"
                     defaultValue={editSingleContact.address}
@@ -102,7 +102,7 @@ const ContactEditModal = props => {
                     onChange={e => setPhoneNumber(e.target.value)}
                     id="phoneNumber"
                     className="form-control"
-                    icon="mail"
+                    icon="phone"
                     iconPosition="left"
                     label="Phone Number"
                     defaultValue={editSingleContact.phone_number}

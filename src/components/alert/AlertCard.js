@@ -5,12 +5,13 @@ import helloDanhRed from "../../icons/helloDanhRed.png";
 import helloDanhYellow from "../../icons/helloDanhYellow.png";
 import helloDanhGreen from "../../icons/helloDanhGreen.png";
 
+//Renders Alert Card with corresponding image and alert. User is able to Edit alert
 const AlertCard = props => {
   return (
-    <Card >
+    <Card>
       <Card.Content>
         <Grid container centered columns={3}>
-          <Grid.Row >
+          <Grid.Row>
             <Grid.Column width={2} verticalAlign="left">
               {props.alert.alert_placement_id === 1 ? (
                 <Image src={helloDanhRed} size="small" />
@@ -22,10 +23,23 @@ const AlertCard = props => {
                 <Image src={helloDanhGreen} size="small" />
               ) : null}
             </Grid.Column>
-            <Grid.Column width={12} style={{textAlign:"left", border: ".08em solid #d4d4d5", borderRadius: "5px", marginRight:"3em"}}>
-              <Card.Description style={{height: "10em", overflow: "auto"}} >{props.alert.alert}</Card.Description>
+            <Grid.Column
+              width={12}
+              style={{
+                textAlign: "left",
+                border: ".08em solid #d4d4d5",
+                borderRadius: "5px",
+                marginRight: "3em"
+              }}
+            >
+              <Card.Description
+                style={{ height: "10em", overflow: "auto", paddingTop: ".8em" }}
+              >
+                {props.alert.alert}
+              </Card.Description>
             </Grid.Column>
-            <Grid.Column width={1} >
+            <Grid.Column width={1}>
+              {/* Alert edit modal. Open Modal upon Edit button click */}
               <AlertEditModal
                 alertId={props.alert.id}
                 getAlerts={props.getAlerts}
