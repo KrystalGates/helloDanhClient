@@ -117,7 +117,7 @@ const MyInfoEditModal = props => {
                     label="Email"
                     defaultValue={myInfo.user.email}
                   />
-                  <Button content="Save" />
+                  <Button content="Save" color="teal" />
                   <Button content="Cancel" onClick={toggleEditMyInfo}/>
                 </Form>
               </Modal.Content>
