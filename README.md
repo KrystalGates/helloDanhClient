@@ -10,8 +10,6 @@ Hello DANH (Distressed And Need Help) is an application designed for people who 
 
 `npm install`
 
-3. Then in the terminal:
-
 `npm start`
 
 You have the front end of Hello DANH up and running but WAIT you need to go to this [LINK](https://github.com/KrystalGates/helloDanhApi) to follow the instructions and clone down the API!
