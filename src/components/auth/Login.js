@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import Register from "./Register";
-import helloDanhRed from '../../icons/helloDanhRed.png'
+import helloDanhRed from "../../icons/helloDanhRed.png"
 
 //Renders Login
 const Login = props => {

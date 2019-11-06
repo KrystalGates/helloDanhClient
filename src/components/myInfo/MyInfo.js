@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Grid, Card, Header, Container } from "semantic-ui-react";
 import MyInfoEditModal from "./MyInfoEditModal";
 
+//Renders current user's info
 const MyInfo = props => {
   const [myInfo, setMyInfo] = useState({ user: {} });
 
-  //Fetch call for current user info and sets state on useEffect
+  //Handles getting current user and sets state upon useEffect
   const getMyInfo = () => {
     fetch("http://127.0.0.1:8000/customusers/currentuser", {
       method: "GET",
@@ -23,29 +24,29 @@ const MyInfo = props => {
     getMyInfo();
   }, []);
 
-  //Render My Info Card with current User information such as: full name, email,phone number,and address
   return (
     <>
       <Header as="h1" textAlign="center">
         My Info
       </Header>
       <Container>
-        <Card.Group itemsPerRow={1} style={{marginTop:'1em'}}>
+        <Card.Group itemsPerRow={1} style={{ marginTop: "1em" }}>
           <Card>
             <Card.Content>
               <Grid container column={2}>
                 <Grid.Row>
                   <Grid.Column width={14}>
                     <div>
-
-                    <Card.Header style={{ fontSize: "22px", fontWeight: 650 }}>
-                      {myInfo.user.first_name} {myInfo.user.last_name}
-                    </Card.Header>
-                    <Card.Description>
-                      <div>{myInfo.user.email}</div>
-                      <div>{myInfo.phone_number}</div>
-                      <div>{myInfo.address}</div>
-                    </Card.Description>
+                      <Card.Header
+                        style={{ fontSize: "22px", fontWeight: 650 }}
+                      >
+                        {myInfo.user.first_name} {myInfo.user.last_name}
+                      </Card.Header>
+                      <Card.Description>
+                        <div>{myInfo.user.email}</div>
+                        <div>{myInfo.phone_number}</div>
+                        <div>{myInfo.address}</div>
+                      </Card.Description>
                     </div>
                   </Grid.Column>
                   <Grid.Column width={1}>

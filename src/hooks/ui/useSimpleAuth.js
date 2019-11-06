@@ -1,3 +1,4 @@
+//Handles Authentication, Register, Login and Logout
 const useSimpleAuth = () => {
     const isAuthenticated = loggedIn =>
         loggedIn || localStorage.getItem("helloDanh_token") !== null
