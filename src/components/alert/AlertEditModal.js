@@ -7,6 +7,7 @@ const AlertEditModal = props => {
   const [editAlert, setEditAlert] = useState([]);
   const [openForm, setOpenForm] = useState(false);
 
+  //Handles open and close of Modal
   const toggle = () => {
     setOpenForm(!openForm);
   };

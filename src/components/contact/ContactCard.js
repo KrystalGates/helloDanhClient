@@ -5,7 +5,6 @@ import ContactDeleteModal from "./ContactDeleteModal";
 
 //Renders Users contants with full name, email, address, and phone number.
 //User can edit and delete contacts
-
 const ContactCard = props => {
   return (
     <Card>

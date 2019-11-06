@@ -3,33 +3,8 @@ body{
     font-size: 18px;
 }
 
-h1.ui.center.aligned.header{
-    font-family: 'Alegreya Sans', sans-serif;
-    margin-bottom: .8em;
-    margin-top: .8em;
-}
-.ui.modal>.header{
-    font-family: 'Alegreya Sans', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-}
-
-div.text{
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 20px;
-}
-
 a.item{
     font-family: 'Alegreya Sans', sans-serif;
-    font-size: 18px;
-}
-
-div.item{
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 18px;
-}
-.ui.form .field>label{
-    font-weight: 200;
     font-size: 18px;
 }
 
@@ -40,10 +15,27 @@ button.ui.button{
     color: gray;
 }
 
+div.item{
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 18px;
+}
+
+div.text{
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 20px;
+}
+
+h1.ui.center.aligned.header{
+    font-family: 'Alegreya Sans', sans-serif;
+    margin-bottom: .8em;
+    margin-top: .8em;
+}
+
 img.ui.large.image.home{
     cursor: pointer;
     transition: transform .2s;
 }
+
 img.ui.large.image.home:hover{
         transform: scale(1.1);
 }
@@ -57,7 +49,20 @@ img.ui.medium.image:hover.home{
     transform: scale(1.2);
 }
 
-pre{
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 16px;
+.ui.form .field>label{
+    font-weight: 200;
+    font-size: 18px;
 }
+
+.ui.modal>.header{
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+
+}
+
+
+
+
+
+

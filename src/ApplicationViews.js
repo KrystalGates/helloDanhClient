@@ -5,6 +5,7 @@ import ContactList from "./components/contact/ContactList";
 import AlertList from "./components/alert/AlertList";
 import MyInfo from "./components/myInfo/MyInfo";
 
+//Handles Routing for App
 const ApplicationViews = () => {
   return (
     <React.Fragment>
