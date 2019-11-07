@@ -8,7 +8,7 @@ const MyInfo = props => {
 
   //Handles getting current user and sets state upon useEffect
   const getMyInfo = () => {
-    fetch("https://api.hellodanh.com/customusers/currentuser", {
+    fetch("http://api.hellodanh.com/customusers/currentuser", {
       method: "GET",
       headers: {
         Accept: "application/json",
