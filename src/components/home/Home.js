@@ -31,7 +31,7 @@ const Home = props => {
 
   //Handles getting current user info and contacts associated with that user. Sets state upon useEffect
   const getUserAndContacts = () => {
-    fetch("https://api.hellodanh.com/customusers/currentuser", {
+    fetch("http://api.hellodanh.com/customusers/currentuser", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -60,7 +60,7 @@ const Home = props => {
       props.history.push("/contacts");
     } else {
       fetch(
-        `https://api.hellodanh.com/alerts?alert_placement_id=${alert_placement_id}`,
+        `http://api.hellodanh.com/alerts?alert_placement_id=${alert_placement_id}`,
         {
           method: "GET",
           headers: {
