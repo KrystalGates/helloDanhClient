@@ -14,7 +14,7 @@ const AlertEditModal = props => {
 
   //Fetch call GET for single alert and sets state upon useEffect
   const getAlert = () => {
-    fetch(`http://www.hellodanh.com/alerts/${props.alertId}`, {
+    fetch(`http://api.hellodanh.com/alerts/${props.alertId}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -29,7 +29,7 @@ const AlertEditModal = props => {
   //Fetch call to PUT for update alert
   const updateAlert = (e, alertId) => {
     e.preventDefault();
-    fetch(`http://www.hellodanh.com/alerts/${alertId}`, {
+    fetch(`http://api.hellodanh.com/alerts/${alertId}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
