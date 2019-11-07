@@ -4,7 +4,7 @@ const useSimpleAuth = () => {
         loggedIn || localStorage.getItem("helloDanh_token") !== null
 
     const register = (userInfo, setIsLoggedIn) => {
-        return fetch("http://127.0.0.1:8000/register", {
+        return fetch("http://www.hellodanh.com/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ const useSimpleAuth = () => {
     }
 
     const login = (credentials, setIsLoggedIn) => {
-        return fetch("http://127.0.0.1:8000/login", {
+        return fetch("http://www.hellodanh.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

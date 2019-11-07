@@ -8,7 +8,7 @@ const AlertList = props => {
 
   //Fetch call GET for all alerts and sets state upon useEffect
   const getAlerts = () => {
-    fetch("http://127.0.0.1:8000/alerts", {
+    fetch("http://www.hellodanh.com//alerts", {
       method: "GET",
       headers: {
         Accept: "application/json",
