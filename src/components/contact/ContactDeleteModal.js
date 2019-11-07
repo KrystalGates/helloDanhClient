@@ -12,7 +12,7 @@ const ContactDeleteModal = props => {
 
   //Handles action of Deleting contact
   const deleteContact = () => {
-    fetch(`http://www.hellodanh.com/contacts/${props.contactId}`, {
+    fetch(`http://api.hellodanh.com/contacts/${props.contactId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("helloDanh_token")}`
