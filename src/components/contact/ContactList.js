@@ -9,7 +9,7 @@ const ContactList = props => {
 
   //Handles getting all contacts and sets state upon useEffect
   const getContacts = () => {
-    fetch("https://api.hellodanh://api.hellodanh.com/contacts", {
+    fetch("http://api.hellodanh.com/contacts", {
       method: "GET",
       headers: {
         Accept: "application/json",

@@ -25,7 +25,7 @@ const AddContact = props => {
       phone_number: +phoneNumber,
       email: email
     };
-    fetch(`https://api.hellodanh://api.hellodanh.com/contacts`, {
+    fetch(`http://api.hellodanh.com/contacts`, {
       method: "POST",
       headers: {
         Accept: "application/json",
