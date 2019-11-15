@@ -18,7 +18,7 @@ const ContactEditModal = props => {
 
   //Handles getting single contact
   const getContact = () => {
-    fetch(`http://api.hellodanh.com/contacts/${props.contactId}`, {
+    fetch(`https://api.hellodanh://api.hellodanh.com/contacts/${props.contactId}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -47,7 +47,7 @@ const ContactEditModal = props => {
       phone_number: +phoneNumber,
       email: email
     };
-    fetch(`http://api.hellodanh.com/contacts/${contactId}`, {
+    fetch(`https://api.hellodanh://api.hellodanh.com/contacts/${contactId}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",

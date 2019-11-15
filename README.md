@@ -12,8 +12,8 @@ Hello DANH (Distressed And Need Help) is an application designed for people who 
 
 `npm start`
 
-You have the front end of Hello DANH up and running but WAIT you need to go to this [LINK](https://github.com/KrystalGates/helloDanhApi) to follow the instructions and clone down the API!
+You have the front end of Hello DANH up and running but WAIT you need to go to this [LINK](https://api.hellodanhs://github.com/KrystalGates/helloDanhApi) to follow the instructions and clone down the API!
 
-Created with [React](https://reactjs.org/)
+Created with [React](https://api.hellodanhs://reactjs.org/)
 
-Styled with [Semantic UI React](https://react.semantic-ui.com/)
+Styled with [Semantic UI React](https://api.hellodanhs://react.semantic-ui.com/)
