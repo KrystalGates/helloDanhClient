@@ -18,7 +18,7 @@ const MyInfoEditModal = props => {
 
   //Handles getting current user info and sets state on useEffect
   const getMyInfoEditForm = () => {
-    fetch("http://api.hellodanh.com/customusers/currentuser", {
+    fetch("https://api.hellodanh.com/customusers/currentuser", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -47,7 +47,7 @@ const MyInfoEditModal = props => {
       phone_number: +phoneNumber,
       email: email
     };
-    fetch(`http://api.hellodanh.com/customusers/${props.myInfoId}`, {
+    fetch(`https://api.hellodanh.com/customusers/${props.myInfoId}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
